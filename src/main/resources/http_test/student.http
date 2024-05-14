@@ -1,0 +1,23 @@
+###student and channel created
+POST http://localhost:8090/api/channel/1/student/create
+# orginal_id unique bo'ladi
+Content-Type: application/json
+
+{
+  "firstName": "vssdv",
+  "lastName": "cadcf",
+  "originalId": "11111"
+}
+
+###channel orgnal id bilan student listini olish
+GET   http://localhost:8091/api/list/student/channel/{channel_tg_id}
+
+###student ni get qilib lish
+GET http://localhost:8090/api/get/channel/{channel_id}/student/{student_id}
+
+###kanaldagi o'quvchini o'chirish
+DELETE http://localhost:8091/api/delete/channel/{channel_id}/student/{student_id}
+
+
+# channel_tg_id -> telegramdan berialdigan id
+# channel_id -> tartib raqami

@@ -1,0 +1,18 @@
+###Channel Created
+POST http://localhost:8090/api/channel/1/create
+Content-Type: application/json
+
+{
+  "name": "Prog(D,CH,J)",
+  "tgId": "4444"
+}
+
+###Teacher kanallarini olish
+GET   http://localhost:8090/api/list/channel/teacher/2
+
+
+###kanalni get qilish
+GET http://localhost:8091/api/get/teacher/{teacher_id}/channel/{channel_id}
+
+###teacherni kanalini ochirish
+DELETE  http://localhost:8091/api/delete/teacher/{teacher_id}/channel/{channel_id}

@@ -1,0 +1,12 @@
+POST http://localhost:8090/api/answer/1/create
+Content-Type: application/json
+
+{
+  "green": null,
+  "red": "qizil",
+  "pink": null
+}
+
+###
+//select student.original_id,student.last_name,a.green,a.red,a.pink,a.created_date from student inner join public.answer a on student.id = a.student_id
+//inner join public.channel c on c.id = student.channel_id where c.id = 1 and  a.created_date = current_date

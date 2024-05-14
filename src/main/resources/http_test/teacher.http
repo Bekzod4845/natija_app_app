@@ -1,0 +1,17 @@
+###Teacher created
+POST http://localhost:8090/api/teacher/create
+Content-Type: application/json
+
+{
+  "name": "Firdavs",
+  "tgId": "23345"
+  }
+
+###Id si bo'yicha teacher ni get qilish
+GET http://localhost:8090/api/get/teacher/1
+
+###Id si bo'yicha teacher ni delete qilish
+DELETE  http://localhost:8091/api/delete/teacher/{teacher_id}
+
+###Get Teacher List
+GET http://localhost:8090/api/list/teacher
