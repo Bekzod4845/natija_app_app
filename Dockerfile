@@ -1,8 +1,10 @@
-FROM maven:3.8.5-amazoncorretto-17
-COPY . .
-RUN mvn clean package -DskipTests
+FROM openjdk:17-jdk-alpine
 
-FROM amazoncorretto:17.0.1-amazoncorretto
-COPY --from=build /target/natija_app-0.0.1-SNAPSHOT.jar natija_app.jar
-EXPOSE 8080
-ENTRYPOINT ["java","-jar","natija_app.jar"]
+# Set the working directory to /app
+WORKDIR /app
+
+# Copy the executable jar file and the application.properties file to the container
+COPY target/natija_app-0.0.1-SNAPSHOT.jar /app/
+
+# Set the command to run the Spring Boot application
+CMD ["java", "-jar", "natija_app-0.0.1-SNAPSHOT.jar"]
