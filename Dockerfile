@@ -1,10 +1,13 @@
-FROM openjdk:17-jdk-alpine
+FROM openjdk:17-jdk-slim AS build
 
-# Set the working directory to /app
-WORKDIR /app
+COPY pom.xml mvnw ./
+COPY .mvn .mvn
+RUN ./mvnw dependency:resolve
 
-# Copy the executable jar file and the application.properties file to the container
-COPY target/natija_app-0.0.1-SNAPSHOT.jar /app/
+COPY src src
+RUN ./mvnw package
 
-# Set the command to run the Spring Boot application
-CMD ["java", "-jar", "natija_app-0.0.1-SNAPSHOT.jar"]
+FROM openjdk:17-jdk-slim
+WORKDIR natija_app
+COPY --from=build target/*.jar natija_app.jar
+ENTRYPOINT ["java", "-jar", "natija_app.jar"]
