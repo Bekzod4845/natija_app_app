@@ -1,11 +1,7 @@
-FROM openjdk:17-jdk-slim AS build
+FROM maven:3.8.5-openjdk-17
 
-COPY pom.xml mvnw ./
+WORKDIR /natija_app
+COPY . .
+RUN mvn clean install
 
-COPY src src
-RUN ./mvnw package
-
-FROM openjdk:17-jdk-slim
-WORKDIR natija_app
-COPY --from=build target/*.jar natija_app.jar
-ENTRYPOINT ["java", "-jar", "natija_app.jar"]
+CMD mvn spring-boot:run
